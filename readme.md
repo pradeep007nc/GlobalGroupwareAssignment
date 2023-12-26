@@ -13,7 +13,22 @@ Make sure you have the following installed:
 
 Follow these steps to clean, build, and start the Spring Boot project:
 
-### 1. Clone the Repository
+# 1. Clone the Repository
+git clone https://github.com/pradeep007nc/GlobalGroupwareAssignment
 
-```bash
-git clone https://github.com/your-username/your-spring-boot-project.git
+# 2. Navigate to the Project Directory
+cd GlobalGroupwareAssignment
+
+# 3. Clean the Project
+mvn clean
+
+# 4. Build the Project
+mvn install
+
+# 5. Start the Application
+mvn spring-boot:run
+
+
+# Documentation for apis(swagger)
+"[Swagger API documentation](http://localhost:8080/swagger-ui/index.html)"
+
