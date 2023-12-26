@@ -68,12 +68,12 @@ public class EntryLevelEmployeeController {
         return this.employeeService.deleteEmployeeById(employeeId);
     }
 
-    @DeleteMapping("/delete_employees")
-    @ApiOperation(value = "Delete all employees", notes = "Delete all employees.")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "All employees successfully deleted")
-    })
-    public ResponseEntity<?> deleteAllEmployees(){
-        return this.employeeService.deleteAllEmployees();
-    }
+//    @DeleteMapping("/delete_employees")
+//    @ApiOperation(value = "Delete all employees", notes = "Delete all employees.")
+//    @ApiResponses(value = {
+//            @ApiResponse(code = 200, message = "All employees successfully deleted")
+//    })
+//    public ResponseEntity<?> deleteAllEmployees(){
+//        return this.employeeService.deleteAllEmployees();
+//    }
 }

@@ -1,6 +1,7 @@
 package dev.pradeep.GlobalGroupware.Services;
 
 import dev.pradeep.GlobalGroupware.Dto.EmployeeResponseDto;
+import dev.pradeep.GlobalGroupware.Entity.EmailDetails;
 import dev.pradeep.GlobalGroupware.Entity.Employee;
 import dev.pradeep.GlobalGroupware.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private AdvancedEmployeeService employeeService;
+
     /*
         method to add a employee
         takes parameter employee validates and save to database
@@ -38,6 +42,22 @@ public class EmployeeService {
         else if (employee.getReportsTo() != null && !this.employeeRepository.existsByEmployeeId(employee.getReportsTo())) {
             EmployeeResponseDto dto = new EmployeeResponseDto("failure", null, "Manager doesn't exist");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(dto);
+        }
+        /*
+            this part to send mail
+         */
+        else if(this.employeeRepository.existsByEmployeeId(employee.getReportsTo())){
+            String text = employee.getEmployeeName() + " will now work under you. Mobile number is " +
+                    employee.getPhoneNo() + " and email is "+employee.getEmail();
+
+            EmailDetails emailDetails = new EmailDetails();
+            Optional<Employee> manager = this.employeeRepository.findById(employee.getReportsTo());
+            Employee managerData = manager.get();
+            emailDetails.setRecipient(managerData.getEmail());
+            emailDetails.setSubject("new Employee Added under you");
+            emailDetails.setMsgBody(text);
+
+            employeeService.sendMail(emailDetails);
         }
 
         //  now safe to add an employee to the database

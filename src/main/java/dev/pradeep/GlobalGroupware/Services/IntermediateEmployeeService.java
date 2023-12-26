@@ -51,7 +51,7 @@ public class IntermediateEmployeeService {
     }
 
 
-    //util function/helper
+    //util function(helper)
     private ResponseEntity<?> employeeErrorHelper(String data){
         EmployeeResponseDto dto = new EmployeeResponseDto("failure", null, data);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(dto);
