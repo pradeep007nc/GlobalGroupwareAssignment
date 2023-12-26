@@ -4,6 +4,8 @@ import dev.pradeep.GlobalGroupware.Dto.EmployeeResponseDto;
 import dev.pradeep.GlobalGroupware.Entity.Employee;
 import dev.pradeep.GlobalGroupware.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -67,8 +69,9 @@ public class EmployeeService {
         method to fetch all employees
         return list of all employees
      */
-    public ResponseEntity<List<Employee>> fetchAllEmployees(){
-        return ResponseEntity.status(HttpStatus.OK).body(this.employeeRepository.findAll());
+    public ResponseEntity<Page<Employee>> fetchAllEmployees(Pageable pageable) {
+        Page<Employee> employeesPage = employeeRepository.findAll(pageable);
+        return ResponseEntity.status(HttpStatus.OK).body(employeesPage);
     }
 
     /*

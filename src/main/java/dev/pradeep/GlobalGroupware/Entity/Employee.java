@@ -1,5 +1,6 @@
 package dev.pradeep.GlobalGroupware.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Pattern;
 public class Employee {
 
     @Id
+    @JsonIgnore
     private String employeeId;
 
     @NotBlank(message = "Employee name cannot be blank")
