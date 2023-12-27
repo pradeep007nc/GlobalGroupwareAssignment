@@ -31,6 +31,17 @@ public class EntryLevelEmployeeController {
         return employeeService.fetchAllEmployees(pageable);
     }
 
+    //note give reportTo as null if there is no manager existing
+    /*
+        ex:
+        {
+            "employeeName": "sandeep",
+            "phoneNo": "9742625036",
+            "email": "pradeepnaidu2486@gmail.com",
+            "reportsTo": null,
+            "profileImageUrl": "home/root/demo.jpeg"
+        }
+     */
     @ApiOperation(value = "Add a new employee", notes = "If no manager exists, set 'reportsTo' as null.")
     @PostMapping("/add_employee")
     public ResponseEntity<?> addEmployee(@RequestBody Employee employee){
