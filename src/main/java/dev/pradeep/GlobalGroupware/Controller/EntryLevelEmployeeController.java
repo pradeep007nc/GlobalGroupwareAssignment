@@ -59,7 +59,7 @@ public class EntryLevelEmployeeController {
         return this.employeeService.updateEmployee(employeeId, employee);
     }
 
-    @GetMapping("/fetch_user/{employeeId}")
+    @GetMapping("/fetch_employee/{employeeId}")
     @ApiOperation(value = "Fetch an employee by ID", notes = "Get details of a specific employee by ID.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Employee found"),
