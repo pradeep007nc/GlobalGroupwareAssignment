@@ -38,3 +38,13 @@ server ip = 15.207.21.237
 port: 8080
 The application is hosted on: http://15.207.21.237:8080/
 ex to fetch all employees: http://15.207.21.237:8080/api/employees/fetch_all_employees
+
+note: while adding a employee, if no top level manager exist use null for reportTo field.
+ex: 
+{
+  "employeeName": "string",
+  "phoneNo": "string",
+  "email": "string",
+  "reportsTo": null,
+  "profileImageUrl": "string"
+}
